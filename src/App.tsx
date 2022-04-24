@@ -8,7 +8,6 @@ import Search from './routes/Search';
 export default function App() {
   return (
     <>
-      <Navbar />
       <Routes>
         <Route path='/search' element={<Search />} />
         <Route index element={<Home />} />
