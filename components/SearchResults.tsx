@@ -1,4 +1,5 @@
 import { Results } from '../types'
+import PaginationButtons from './PaginationButtons';
 
 interface Props {
   results: Results
