@@ -1,6 +1,7 @@
 import { MicrophoneIcon, ViewGridIcon } from '@heroicons/react/solid'
 import { SearchIcon } from '@heroicons/react/outline'
 import { useRef } from 'react'
+import Image from 'next/image'
 
 import Footer from '../components/Footer'
 import Avatar from '../components/Avatar'
@@ -14,7 +15,7 @@ export default function Home() {
     e.preventDefault()
     const term = searchInputRef.current?.value
     if (!term) return
-    router.push(`/search/term=${term}`)
+    router.push(`/search?term=${term}`)
   }
 
   return (
@@ -36,10 +37,10 @@ export default function Home() {
       </header>
       {/* Body */}
       <form className="mt-44 flex w-4/5 flex-grow flex-col items-center">
-        <img
+        <Image
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/368px-Google_2015_logo.svg.png"
-          className="h-[100px] w-[300px]"
-          alt=""
+          height={100}
+          width={300}
         />
         <div className="mt-5 flex w-full max-w-md items-center rounded-full border border-gray-200 px-5 py-3 focus-within:shadow-lg hover:shadow-lg sm:max-w-xl lg:max-w-2xl">
           <SearchIcon className="mr-3 h-5 text-gray-500" />
