@@ -1,31 +1,40 @@
 import Head from 'next/head'
 import { GetServerSideProps } from 'next'
+import { useRouter } from 'next/router'
 
 import Header from '../components/Header'
 import Response from '../Response'
+import SearchResults from '../components/SearchResults';
+import { Results } from '../types';
 
 interface Props {
-  results: {}
+  results: Results
 }
 
 export default function Search({ results }: Props) {
-  console.log( results )
+  const router = useRouter()
   return (
     <div>
       <Head>
-        <title>Search Results</title>
+        <title>{router.query.term} - Google Search</title>
       </Head>
       <Header />
+      <SearchResults results={results} />
     </div>
   )
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
+  // Saved response for testing to stop exceeding daily api call quota
   const useDummyData = true
+  // Pagination
+  const startIndex = context.query.start || 0
 
-  const data = useDummyData ? Response : await fetch(
-    `https://www.googleapis.com/customsearch/v1?key=${process.env.NEXT_PUBLIC_API_KEY}&cx=${process.env.NEXT_PUBLIC_CONTEXT_KEY}&q=${context.query.term}`
-  ).then((response) => response.json())
+  const data = useDummyData
+    ? Response
+    : await fetch(
+        `https://www.googleapis.com/customsearch/v1?key=${process.env.API_KEY}&cx=${process.env.CONTEXT_KEY}&q=${context.query.term}&start=${startIndex}`
+      ).then((response) => response.json())
 
   // After SSR, pass props to client
   return {
@@ -34,5 +43,3 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     },
   }
 }
-
-// https://www.googleapis.com/customsearch/v1?key=AIzaSyCwEYovkISzQ2iyOB9SILK6qm1WDwnpum8&cx=43ba6fb1e515b2873&q=testing
