@@ -2,7 +2,7 @@ import { GlobeIcon } from '@heroicons/react/solid';
 
 export default function Footer() {
   return (
-    <footer className='grid w-full divide-y-[1px] divide-gray-399 bg-gray-100 text-sm text-gray-500'>
+    <footer className='grid w-full divide-y-[1px] divide-gray-399 bg-gray-100 text-sm text-gray-500 mb-2'>
       <div className='px-8 py-3'>
         <p>Australia</p>
       </div>

@@ -11,7 +11,6 @@ export default function App() {
         <Route path='/search' element={<Search />} />
         <Route index element={<Home />} />
       </Routes>
-      <Footer />
     </>
   );
 }

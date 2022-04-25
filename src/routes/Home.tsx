@@ -1,8 +1,21 @@
 import { MicrophoneIcon, ViewGridIcon } from '@heroicons/react/solid';
 import { SearchIcon } from '@heroicons/react/outline';
 import Avatar from '../components/Avatar';
+import Footer from '../components/Footer';
+import { useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function Home() {
+  const searchInputRef = useRef<HTMLInputElement>(null);;
+  const navigate = useNavigate();
+
+  const search = (e: { preventDefault: () => void; } ) => {
+    e.preventDefault();
+    const term = searchInputRef.current?.value;
+    if (!term) return;
+    navigate(`/search/term=${term}`);
+  };
+
   return (
     <div className='flex flex-col items-center justify-center h-screen'>
       {/* Header */}
@@ -29,14 +42,23 @@ export default function Home() {
         />
         <div className='w-full flex mt-5 hover:shadow-lg focus-within:shadow-lg max-w-md rounded-full border border-gray-200 px-5 py-3 items-center sm:max-w-xl lg:max-w-2xl'>
           <SearchIcon className='h-5 mr-3 text-gray-500' />
-          <input type='text' className='focus:outline-none flex-grow' />
+          <input
+            type='text'
+            className='focus:outline-none flex-grow'
+            ref={searchInputRef}
+          />
           <MicrophoneIcon className='h-5' />
         </div>
         <div className='flex flex-col sm:flex-row w-1/2 space-y-2 justify-center mt-8 sm:space-y-0 sm:space-x-4'>
-          <button className='btn'>Google Search</button>
-          <button className='btn'>I'm feeling lucky</button>
+          <button className='btn' onClick={search}>
+            Google Search
+          </button>
+          <button className='btn' onClick={search}>
+            I'm feeling lucky
+          </button>
         </div>
       </form>
+      <Footer />
     </div>
   );
 }
