@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useRef } from 'react'
 import Avatar from './Avatar'
+import HeaderOptions from './HeaderOptions'
 
 export default function Header() {
   const router = useRouter()
@@ -41,8 +42,12 @@ export default function Header() {
             Search
           </button>
         </form>
-        <Avatar className="ml-auto" url="https://upload.wikimedia.org/wikipedia/commons/3/34/Elon_Musk_Royal_Society_%28crop2%29.jpg" />
+        <Avatar
+          className="ml-auto"
+          url="https://upload.wikimedia.org/wikipedia/commons/3/34/Elon_Musk_Royal_Society_%28crop2%29.jpg"
+        />
       </div>
+      <HeaderOptions />
     </header>
   )
 }
