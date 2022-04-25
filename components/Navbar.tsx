@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { toggleDarkMode } from '../store/darkmode/darkmode.actions';
+import { toggleDarkMode } from '../src/store/darkmode/darkmode.actions';
 
 interface ConnectedProps {
   darkMode: boolean;
