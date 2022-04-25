@@ -4,7 +4,7 @@ import Avatar from '../components/Avatar';
 
 export default function Home() {
   return (
-    <>
+    <div className='flex flex-col items-center justify-center h-screen'>
       {/* Header */}
       <header className='flex w-full p-5 justify-between'>
         {/* Left */}
@@ -21,7 +21,7 @@ export default function Home() {
         </div>
       </header>
       {/* Body */}
-      <form className='flex flex-col items-center mt-44 flex-grow'>
+      <form className='flex flex-col items-center mt-44 flex-grow w-4/5'>
         <img
           src='https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/368px-Google_2015_logo.svg.png'
           className='h-[100px] w-[300px]'
@@ -37,6 +37,6 @@ export default function Home() {
           <button className='btn'>I'm feeling lucky</button>
         </div>
       </form>
-    </>
+    </div>
   );
 }
